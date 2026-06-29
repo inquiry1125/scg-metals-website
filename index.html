@@ -448,68 +448,30 @@
     </nav>
 
     <div class="page-content">
-    <!-- Hero Section -->
-    <section class="hero" id="home" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; background: var(--gradient); overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5" x="0" y="0" width="100" height="100"/></svg>'); background-size: 50px 50px; opacity: 0.5;"></div>
-        <div style="position: absolute; width: 100%; height: 100%; overflow: hidden;" id="particles"></div>
-        <div style="position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 2rem;">
-            <div style="display: inline-block; background: rgba(197, 48, 48, 0.2); border: 1px solid var(--accent); color: var(--accent-light); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px;">Established in Japan &bull; Global Quality Standards</div>
-            <h1 style="font-size: 4.5rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; line-height: 1.1; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Precision <span style="color: var(--accent);">Steel</span> Solutions</h1>
-            <p style="font-size: 1.4rem; color: var(--steel-light); margin-bottom: 3rem; font-weight: 300; line-height: 1.6;">Leading manufacturer and supplier of premium steel materials, custom fabrication, and industrial metal solutions for projects of any scale.</p>
-            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                <a href="products.html" class="btn btn-primary">
-                    <i class="fas fa-cubes"></i> Explore Products
-                </a>
-                <a href="contact.html" class="btn btn-outline">
-                    <i class="fas fa-phone"></i> Get a Quote
-                </a>
-            </div>
-            <div style="display: flex; justify-content: center; gap: 4rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                <div style="text-align: center;">
-                    <div style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--accent);">25+</div>
-                    <div style="font-size: 0.9rem; color: var(--steel-light); text-transform: uppercase; letter-spacing: 1px;">Years Experience</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--accent);">500+</div>
-                    <div style="font-size: 0.9rem; color: var(--steel-light); text-transform: uppercase; letter-spacing: 1px;">Projects Completed</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--accent);">50+</div>
-                    <div style="font-size: 0.9rem; color: var(--steel-light); text-transform: uppercase; letter-spacing: 1px;">Countries Served</div>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--accent);">100%</div>
-                    <div style="font-size: 0.9rem; color: var(--steel-light); text-transform: uppercase; letter-spacing: 1px;">Quality Assured</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Products - 4 Pictures -->
-    <section style="background: var(--dark); padding: 5rem 2rem;">
+    <!-- 4 Steel Product Pictures - Main Display -->
+    <section style="background: var(--darker); padding: 6rem 2rem 3rem;">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Our Steel Products</h2>
-                <p>Premium steel materials available in all standard and custom specifications.</p>
+                <h2>SCG Metals Co., Inc.</h2>
+                <p>Premium Steel Materials & Fabrication — Any Size, Any Design</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
                 <!-- Product 1: Steel Sheets -->
-                <div style="background: var(--darker); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
-                    <div style="position: relative; height: 250px; overflow: hidden;">
+                <div style="background: var(--dark); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
+                    <div style="position: relative; height: 280px; overflow: hidden;">
                         <img src="https://kimi-web-img.moonshot.cn/img/www.bushwickmetals.com/0a41eb5e4f3425a6c8e5e00c4232fa90c1e5d07f.jpg" alt="Steel Sheets" style="width: 100%; height: 100%; object-fit: cover;">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(13,17,23,0.9), transparent); display: flex; align-items: flex-end; padding: 1.5rem;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Sheets & Plates</span>
+                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Steel Sheets & Plates</span>
                         </div>
                     </div>
                     <div style="padding: 1.5rem;">
-                        <h3 style="color: var(--white); font-size: 1.3rem; margin-bottom: 0.5rem;">Steel Sheets & Plates</h3>
-                        <p style="color: var(--steel); font-size: 0.95rem; line-height: 1.6;">High-quality carbon steel, stainless steel, and alloy steel sheets and plates in various thicknesses and widths.</p>
-                        <div style="display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                        <p style="color: var(--steel); font-size: 0.95rem; line-height: 1.6;">Carbon steel, stainless steel, and alloy sheets in various thicknesses for construction and industrial applications.</p>
+                        <div style="display: flex; gap: 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">Thickness</strong>
                                 0.5mm - 200mm
                             </div>
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">Width</strong>
                                 1000mm - 3000mm
                             </div>
@@ -519,22 +481,21 @@
                 </div>
 
                 <!-- Product 2: Steel Bars -->
-                <div style="background: var(--darker); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
-                    <div style="position: relative; height: 250px; overflow: hidden;">
+                <div style="background: var(--dark); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
+                    <div style="position: relative; height: 280px; overflow: hidden;">
                         <img src="https://kimi-web-img.moonshot.cn/img/heatonmanufacturing.co.uk/1c9cc8dc256bc9b23f26fec31e27d81766b939f5.jpg" alt="Steel Bars" style="width: 100%; height: 100%; object-fit: cover;">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(13,17,23,0.9), transparent); display: flex; align-items: flex-end; padding: 1.5rem;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Bars & Rebar</span>
+                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Steel Bars & Rebar</span>
                         </div>
                     </div>
                     <div style="padding: 1.5rem;">
-                        <h3 style="color: var(--white); font-size: 1.3rem; margin-bottom: 0.5rem;">Steel Bars & Rebar</h3>
                         <p style="color: var(--steel); font-size: 0.95rem; line-height: 1.6;">Reinforcing bars, round bars, square bars, and flat bars in mild, high-tensile, and stainless steel grades.</p>
-                        <div style="display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                        <div style="display: flex; gap: 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">Diameter</strong>
                                 6mm - 50mm
                             </div>
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">Length</strong>
                                 6m - 12m
                             </div>
@@ -544,22 +505,21 @@
                 </div>
 
                 <!-- Product 3: Steel Pipes -->
-                <div style="background: var(--darker); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
-                    <div style="position: relative; height: 250px; overflow: hidden;">
+                <div style="background: var(--dark); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
+                    <div style="position: relative; height: 280px; overflow: hidden;">
                         <img src="https://kimi-web-img.moonshot.cn/img/songshunsteel.com/cc2f851f154537b02ae2bfc4cec6e5e6a7402b27.webp" alt="Steel Pipes" style="width: 100%; height: 100%; object-fit: cover;">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(13,17,23,0.9), transparent); display: flex; align-items: flex-end; padding: 1.5rem;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Pipes & Tubes</span>
+                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Steel Pipes & Tubes</span>
                         </div>
                     </div>
                     <div style="padding: 1.5rem;">
-                        <h3 style="color: var(--white); font-size: 1.3rem; margin-bottom: 0.5rem;">Steel Pipes & Tubes</h3>
-                        <p style="color: var(--steel); font-size: 0.95rem; line-height: 1.6;">Seamless and welded steel pipes in carbon, alloy, and stainless steel for fluid transport and structural use.</p>
-                        <div style="display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                        <p style="color: var(--steel); font-size: 0.95rem; line-height: 1.6;">Seamless and welded pipes in carbon, alloy, and stainless steel for fluid transport and structural applications.</p>
+                        <div style="display: flex; gap: 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">OD</strong>
                                 10mm - 1200mm
                             </div>
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">WT</strong>
                                 1mm - 100mm
                             </div>
@@ -569,22 +529,21 @@
                 </div>
 
                 <!-- Product 4: Steel Beams -->
-                <div style="background: var(--darker); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
-                    <div style="position: relative; height: 250px; overflow: hidden;">
+                <div style="background: var(--dark); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease;" class="fade-in" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--accent)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'; this.style.boxShadow='none';">
+                    <div style="position: relative; height: 280px; overflow: hidden;">
                         <img src="https://kimi-web-img.moonshot.cn/img/cdn-cbpgj.nitrocdn.com/4cb4548c5ea210975797c4449e2c9b2b7fdd3e59.jpg" alt="Steel Beams" style="width: 100%; height: 100%; object-fit: cover;">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(13,17,23,0.9), transparent); display: flex; align-items: flex-end; padding: 1.5rem;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Beams & Sections</span>
+                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Steel Beams & Sections</span>
                         </div>
                     </div>
                     <div style="padding: 1.5rem;">
-                        <h3 style="color: var(--white); font-size: 1.3rem; margin-bottom: 0.5rem;">Steel Beams & Sections</h3>
-                        <p style="color: var(--steel); font-size: 0.95rem; line-height: 1.6;">Structural steel beams including H-beams, I-beams, U-channels, and angles for construction and industrial frameworks.</p>
-                        <div style="display: flex; gap: 1rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                        <p style="color: var(--steel); font-size: 0.95rem; line-height: 1.6;">H-beams, I-beams, U-channels, and angles for construction, bridges, and heavy industrial frameworks.</p>
+                        <div style="display: flex; gap: 1.5rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">Height</strong>
                                 100mm - 900mm
                             </div>
-                            <div style="font-size: 0.8rem; color: var(--steel-light);">
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">
                                 <strong style="color: var(--accent); display: block;">Length</strong>
                                 6m - 18m
                             </div>
@@ -597,6 +556,40 @@
                 <a href="products.html" class="btn btn-primary">
                     <i class="fas fa-th-large"></i> View All Products
                 </a>
+                <a href="contact.html" class="btn btn-outline" style="margin-left: 1rem;">
+                    <i class="fas fa-phone"></i> Get a Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Intro Below -->
+    <section style="background: var(--dark); padding: 5rem 2rem;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="fade-in">
+                    <h3 style="font-size: 2rem; color: var(--white); margin-bottom: 1.5rem;">Excellence in Steel Manufacturing</h3>
+                    <p style="color: var(--steel-light); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">SCG Metals Co., Inc. is a premier steel materials and fabrication company headquartered in Tokyo, Japan. We deliver premium steel products and custom fabrication solutions for construction and industrial projects worldwide.</p>
+                    <p style="color: var(--steel-light); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem;">From standard structural steel to complex custom fabrications of any size and design, we provide comprehensive solutions tailored to your exact specifications.</p>
+                    <div style="display: flex; gap: 2rem; margin-top: 2rem;">
+                        <div style="text-align: center;">
+                            <div style="font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: var(--accent);">25+</div>
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">Years Experience</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: var(--accent);">500+</div>
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">Projects</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: var(--accent);">50+</div>
+                            <div style="font-size: 0.85rem; color: var(--steel-light);">Countries</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);" class="fade-in">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800" alt="SCG Metals Factory" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(26,54,93,0.8), transparent);"></div>
+                </div>
             </div>
         </div>
     </section>
