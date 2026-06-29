@@ -683,52 +683,61 @@
         }
 
 
-        // Image Slider
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slider-dot');
-        const totalSlides = slides.length;
-        let slideInterval;
+        // Image Slider - Fixed with DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const totalSlides = slides.length;
+            let slideInterval;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = i === index ? '1' : '0';
-            });
-            dots.forEach((dot, i) => {
-                dot.style.background = i === index ? 'var(--accent)' : 'transparent';
-            });
-            currentSlide = index;
-        }
+            console.log('Slider initialized. Total slides:', totalSlides);
 
-        function nextSlide() {
-            showSlide((currentSlide + 1) % totalSlides);
-        }
+            function showSlide(index) {
+                if (slides.length === 0) return;
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? '1' : '0';
+                    slide.style.zIndex = i === index ? '1' : '0';
+                });
+                dots.forEach((dot, i) => {
+                    dot.style.background = i === index ? 'var(--accent)' : 'transparent';
+                });
+                currentSlide = index;
+            }
 
-        function prevSlide() {
-            showSlide((currentSlide - 1 + totalSlides) % totalSlides);
-        }
+            window.nextSlide = function() {
+                showSlide((currentSlide + 1) % totalSlides);
+            };
 
-        function goToSlide(index) {
-            showSlide(index);
-            resetInterval();
-        }
+            window.prevSlide = function() {
+                showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+            };
 
-        function resetInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 5000);
-        }
+            window.goToSlide = function(index) {
+                showSlide(index);
+                resetInterval();
+            };
 
-        // Auto-play every 5 seconds
-        slideInterval = setInterval(nextSlide, 5000);
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(window.nextSlide, 5000);
+            }
 
-        // Pause on hover
-        const slider = document.getElementById('imageSlider');
-        if (slider) {
-            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-            slider.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(nextSlide, 5000);
-            });
-        }
+            // Auto-play every 5 seconds
+            slideInterval = setInterval(window.nextSlide, 5000);
+
+            // Pause on hover
+            const slider = document.getElementById('imageSlider');
+            if (slider) {
+                slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                slider.addEventListener('mouseleave', () => {
+                    slideInterval = setInterval(window.nextSlide, 5000);
+                });
+            }
+
+            // Initialize first slide
+            showSlide(0);
+        });
     </script>
 </body>
 </html>
