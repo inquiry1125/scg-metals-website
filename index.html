@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-
         :root {
             --primary: #1a365d;
             --primary-dark: #0f2744;
@@ -144,6 +143,134 @@
         .page-content {
             padding-top: 80px;
             flex: 1;
+        }
+
+        /* SLIDER STYLES */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 550px;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(13,17,23,0.95) 0%, rgba(13,17,23,0.7) 40%, transparent);
+            padding: 4rem 2rem 3rem;
+        }
+
+        .slide-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .slide-tag {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slide-title {
+            color: var(--white);
+            font-size: 2.2rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-desc {
+            color: var(--steel-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-arrow:hover {
+            background: var(--accent);
+        }
+
+        .slider-arrow.prev { left: 20px; }
+        .slider-arrow.next { right: 20px; }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: var(--accent);
         }
 
         section {
@@ -382,6 +509,12 @@
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .slider {
+                height: 400px;
+            }
+            .slide-title {
+                font-size: 1.6rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -418,8 +551,19 @@
                 gap: 1rem;
                 text-align: center;
             }
-        }
 
+            .slider {
+                height: 350px;
+            }
+
+            .slide-title {
+                font-size: 1.3rem;
+            }
+
+            .slide-desc {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -434,7 +578,7 @@
                 SCG <span>Metals</span>
             </a>
             <ul class="nav-menu" id="navMenu">
-                                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -448,74 +592,74 @@
     </nav>
 
     <div class="page-content">
+
     <!-- Image Slider / Carousel - 4 Steel Foundry Pictures -->
-    <section style="background: var(--darker); padding-top: 80px;">
-        <div style="position: relative; width: 100%; max-width: 1400px; margin: 0 auto; overflow: hidden; border-radius: 0 0 12px 12px;">
-            <!-- Slider Container -->
-            <div id="imageSlider" style="position: relative; width: 100%; height: 550px; overflow: hidden;">
+    <section style="background: var(--darker); padding-top: 0;">
+        <div class="slider-container">
+            <div class="slider" id="imageSlider">
 
                 <!-- Slide 1: Molten Metal Pouring -->
-                <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 1s ease-in-out;">
-                    <img src="https://kimi-web-img.moonshot.cn/img/static.vecteezy.com/d92ba93e1bace69750cca0b59e5d6101c3a73763.jpg" alt="Molten Metal Pouring" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,17,23,0.95) 0%, rgba(13,17,23,0.7) 40%, transparent); padding: 4rem 2rem 2rem;">
-                        <div style="max-width: 1400px; margin: 0 auto;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Steel Manufacturing</span>
-                            <h3 style="color: var(--white); font-size: 2.2rem; margin-top: 1rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Precision Steel Production</h3>
-                            <p style="color: var(--steel-light); font-size: 1.1rem; max-width: 600px; line-height: 1.6;">State-of-the-art foundry operations delivering premium quality steel materials for global construction and industrial projects.</p>
+                <div class="slide active">
+                    <img src="https://kimi-web-img.moonshot.cn/img/static.vecteezy.com/d92ba93e1bace69750cca0b59e5d6101c3a73763.jpg" alt="Molten Metal Pouring">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <span class="slide-tag">Steel Manufacturing</span>
+                            <h3 class="slide-title">Precision Steel Production</h3>
+                            <p class="slide-desc">State-of-the-art foundry operations delivering premium quality steel materials for global construction and industrial projects.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Slide 2: Steel Casting -->
-                <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.steel.org/a4b6b301ada59b535bf3039ff538f09564a3da15.jpg" alt="Steel Casting Process" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,17,23,0.95) 0%, rgba(13,17,23,0.7) 40%, transparent); padding: 4rem 2rem 2rem;">
-                        <div style="max-width: 1400px; margin: 0 auto;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Custom Fabrication</span>
-                            <h3 style="color: var(--white); font-size: 2.2rem; margin-top: 1rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Any Size, Any Design</h3>
-                            <p style="color: var(--steel-light); font-size: 1.1rem; max-width: 600px; line-height: 1.6;">From standard structural steel to complex custom fabrications tailored to your exact specifications and dimensions.</p>
+                <div class="slide">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.steel.org/a4b6b301ada59b535bf3039ff538f09564a3da15.jpg" alt="Steel Casting Process">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <span class="slide-tag">Custom Fabrication</span>
+                            <h3 class="slide-title">Any Size, Any Design</h3>
+                            <p class="slide-desc">From standard structural steel to complex custom fabrications tailored to your exact specifications and dimensions.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Slide 3: Industrial Foundry -->
-                <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                    <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/5cec099180747d784ec321c2ffdf3b3c643460b3.jpg" alt="Industrial Foundry" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,17,23,0.95) 0%, rgba(13,17,23,0.7) 40%, transparent); padding: 4rem 2rem 2rem;">
-                        <div style="max-width: 1400px; margin: 0 auto;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Quality Assurance</span>
-                            <h3 style="color: var(--white); font-size: 2.2rem; margin-top: 1rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">ISO Certified Standards</h3>
-                            <p style="color: var(--steel-light); font-size: 1.1rem; max-width: 600px; line-height: 1.6;">JIS, ASTM, and ISO certified steel products meeting the highest international quality and safety standards.</p>
+                <div class="slide">
+                    <img src="https://kimi-web-img.moonshot.cn/img/c8.alamy.com/5cec099180747d784ec321c2ffdf3b3c643460b3.jpg" alt="Industrial Foundry">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <span class="slide-tag">Quality Assurance</span>
+                            <h3 class="slide-title">ISO Certified Standards</h3>
+                            <p class="slide-desc">JIS, ASTM, and ISO certified steel products meeting the highest international quality and safety standards.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Slide 4: Steel Factory -->
-                <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out;">
-                    <img src="https://kimi-web-img.moonshot.cn/img/news.mit.edu/fdb5a5d14680b3193513881eae44b1e9e9129bb2.jpg" alt="Steel Factory Operations" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(13,17,23,0.95) 0%, rgba(13,17,23,0.7) 40%, transparent); padding: 4rem 2rem 2rem;">
-                        <div style="max-width: 1400px; margin: 0 auto;">
-                            <span style="background: var(--accent); color: var(--white); padding: 0.4rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Global Delivery</span>
-                            <h3 style="color: var(--white); font-size: 2.2rem; margin-top: 1rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Serving 50+ Countries</h3>
-                            <p style="color: var(--steel-light); font-size: 1.1rem; max-width: 600px; line-height: 1.6;">From our headquarters in Tokyo, Japan, we deliver premium steel materials and fabrication solutions worldwide.</p>
+                <div class="slide">
+                    <img src="https://kimi-web-img.moonshot.cn/img/news.mit.edu/fdb5a5d14680b3193513881eae44b1e9e9129bb2.jpg" alt="Steel Factory Operations">
+                    <div class="slide-overlay">
+                        <div class="slide-content">
+                            <span class="slide-tag">Global Delivery</span>
+                            <h3 class="slide-title">Serving 50+ Countries</h3>
+                            <p class="slide-desc">From our headquarters in Tokyo, Japan, we deliver premium steel materials and fabrication solutions worldwide.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Slider Navigation Arrows -->
-                <button onclick="prevSlide()" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: var(--white); width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 10;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">
+                <!-- Navigation Arrows -->
+                <button class="slider-arrow prev" onclick="prevSlide()">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button onclick="nextSlide()" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: var(--white); width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 10;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='rgba(0,0,0,0.5)'">
+                <button class="slider-arrow next" onclick="nextSlide()">
                     <i class="fas fa-chevron-right"></i>
                 </button>
 
-                <!-- Slider Dots -->
-                <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10;">
-                    <button class="slider-dot" onclick="goToSlide(0)" style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--white); background: var(--accent); cursor: pointer; transition: all 0.3s ease;"></button>
-                    <button class="slider-dot" onclick="goToSlide(1)" style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--white); background: transparent; cursor: pointer; transition: all 0.3s ease;"></button>
-                    <button class="slider-dot" onclick="goToSlide(2)" style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--white); background: transparent; cursor: pointer; transition: all 0.3s ease;"></button>
-                    <button class="slider-dot" onclick="goToSlide(3)" style="width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--white); background: transparent; cursor: pointer; transition: all 0.3s ease;"></button>
+                <!-- Dots -->
+                <div class="slider-dots">
+                    <button class="slider-dot active" onclick="goToSlide(0)"></button>
+                    <button class="slider-dot" onclick="goToSlide(1)"></button>
+                    <button class="slider-dot" onclick="goToSlide(2)"></button>
+                    <button class="slider-dot" onclick="goToSlide(3)"></button>
                 </div>
             </div>
         </div>
@@ -567,8 +711,8 @@
             </div>
         </div>
     </section>
-</div>
 
+    </div>
 
     <footer class="footer">
         <div class="footer-grid">
@@ -618,9 +762,7 @@
         </div>
     </footer>
 
-
     <script>
-
         // Loading Screen
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -641,7 +783,6 @@
             });
         }
 
-        // Close mobile menu on link click
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -655,62 +796,51 @@
 
         // Fade In Animation on Scroll
         const fadeElements = document.querySelectorAll('.fade-in');
-
         const fadeInObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         fadeElements.forEach(el => fadeInObserver.observe(el));
 
-        // Particle Animation for Hero
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.style.cssText = 'position: absolute; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 15s infinite;';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.width = Math.random() * 4 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-
-        // Image Slider - Fixed with DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', function() {
+        // ============================================
+        // IMAGE SLIDER - FIXED AND WORKING
+        // ============================================
+        (function() {
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slide');
             const dots = document.querySelectorAll('.slider-dot');
             const totalSlides = slides.length;
             let slideInterval;
+            let isHovering = false;
 
             console.log('Slider initialized. Total slides:', totalSlides);
 
             function showSlide(index) {
                 if (slides.length === 0) return;
-                slides.forEach((slide, i) => {
-                    slide.style.opacity = i === index ? '1' : '0';
-                    slide.style.zIndex = i === index ? '1' : '0';
-                });
-                dots.forEach((dot, i) => {
-                    dot.style.background = i === index ? 'var(--accent)' : 'transparent';
-                });
+
+                // Remove active from all
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Add active to current
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+
                 currentSlide = index;
+                console.log('Showing slide:', index + 1);
             }
 
             window.nextSlide = function() {
-                showSlide((currentSlide + 1) % totalSlides);
+                const next = (currentSlide + 1) % totalSlides;
+                showSlide(next);
             };
 
             window.prevSlide = function() {
-                showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+                const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(prev);
             };
 
             window.goToSlide = function(index) {
@@ -720,24 +850,37 @@
 
             function resetInterval() {
                 clearInterval(slideInterval);
+                if (!isHovering) {
+                    slideInterval = setInterval(window.nextSlide, 5000);
+                }
+            }
+
+            function startAutoPlay() {
+                clearInterval(slideInterval);
                 slideInterval = setInterval(window.nextSlide, 5000);
             }
 
             // Auto-play every 5 seconds
-            slideInterval = setInterval(window.nextSlide, 5000);
+            startAutoPlay();
 
             // Pause on hover
             const slider = document.getElementById('imageSlider');
             if (slider) {
-                slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                slider.addEventListener('mouseenter', () => {
+                    isHovering = true;
+                    clearInterval(slideInterval);
+                    console.log('Slider paused (hover)');
+                });
                 slider.addEventListener('mouseleave', () => {
-                    slideInterval = setInterval(window.nextSlide, 5000);
+                    isHovering = false;
+                    startAutoPlay();
+                    console.log('Slider resumed');
                 });
             }
 
-            // Initialize first slide
+            // Initialize
             showSlide(0);
-        });
+        })();
     </script>
 </body>
 </html>
