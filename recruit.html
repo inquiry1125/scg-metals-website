@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruit | SCG Metals Co., Inc.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+            --primary: #1a365d;
+            --primary-dark: #0f2744;
+            --accent: #c53030;
+            --accent-light: #e53e3e;
+            --steel: #718096;
+            --steel-light: #a0aec0;
+            --dark: #1a202c;
+            --darker: #0d1117;
+            --light: #f7fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #1a365d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, .nav-logo {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--steel-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--white);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active {
+            color: var(--accent);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding-top: 80px;
+            flex: 1;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .section-header p {
+            color: var(--steel);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(197, 48, 48, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 48, 48, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-brand .nav-logo {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-brand p {
+            color: var(--steel);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--steel);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--steel);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--steel-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Loading */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(197, 48, 48, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--darker);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-industry"></i>
+                SCG <span>Metals</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="recruit.html" class="active">Recruit</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+
+    <section style="background: var(--dark); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Join Our Team</h2>
+                <p>Build your career with a global leader in steel manufacturing and fabrication.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                <div class="fade-in">
+                    <h3 style="font-size: 2rem; color: var(--white); margin-bottom: 1.5rem;">Why Work at SCG Metals?</h3>
+                    <p style="color: var(--steel-light); line-height: 1.8; margin-bottom: 2rem; font-size: 1.05rem;">At SCG Metals Co., Inc., we believe our people are our greatest asset. We foster a culture of innovation, safety, and continuous growth. Join a team that values excellence and invests in your professional development.</p>
+                    <p style="color: var(--steel-light); line-height: 1.8; margin-bottom: 2rem; font-size: 1.05rem;">We offer competitive compensation, comprehensive benefits, and opportunities to work on landmark projects around the world. Whether you're an experienced engineer or a fresh graduate, we have a place for passionate talent.</p>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Competitive salary and performance bonuses
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Comprehensive health and dental insurance
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Professional training and certification programs
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Career advancement opportunities
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Modern, safe working environment
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> International project exposure
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Work-life balance initiatives
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 1rem; color: var(--steel-light); font-size: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border-left: 3px solid var(--accent);">
+                            <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i> Employee wellness programs
+                        </li>
+                    </ul>
+                </div>
+                <div style="background: var(--darker); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);" class="fade-in">
+                    <h3 style="color: var(--white); font-size: 1.5rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><i class="fas fa-briefcase" style="color: var(--accent); margin-right: 0.5rem;"></i> Open Positions</h3>
+
+                    <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.02)'; this.style.borderRadius='8px';" onmouseout="this.style.background='transparent'; this.style.borderRadius='0';">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="color: var(--white); font-weight: 600; font-size: 1.1rem;">Senior Structural Engineer</span>
+                            <span style="background: rgba(197, 48, 48, 0.2); color: var(--accent-light); padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Full-time</span>
+                        </div>
+                        <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 0.8rem;">Lead structural design projects for large-scale steel constructions and industrial facilities.</p>
+                        <div style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--steel-light);">
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-yen-sign"></i> Competitive</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-clock"></i> 5+ Years</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.02)'; this.style.borderRadius='8px';" onmouseout="this.style.background='transparent'; this.style.borderRadius='0';">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="color: var(--white); font-weight: 600; font-size: 1.1rem;">CNC Machine Operator</span>
+                            <span style="background: rgba(197, 48, 48, 0.2); color: var(--accent-light); padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Full-time</span>
+                        </div>
+                        <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 0.8rem;">Operate and program CNC cutting, bending, and drilling machines for precision steel fabrication.</p>
+                        <div style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--steel-light);">
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-yen-sign"></i> Competitive</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-clock"></i> 2+ Years</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.02)'; this.style.borderRadius='8px';" onmouseout="this.style.background='transparent'; this.style.borderRadius='0';">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="color: var(--white); font-weight: 600; font-size: 1.1rem;">International Sales Manager</span>
+                            <span style="background: rgba(197, 48, 48, 0.2); color: var(--accent-light); padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Full-time</span>
+                        </div>
+                        <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 0.8rem;">Develop and manage client relationships across Asia-Pacific and global markets.</p>
+                        <div style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--steel-light);">
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-yen-sign"></i> Competitive + Commission</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-clock"></i> 3+ Years</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.02)'; this.style.borderRadius='8px';" onmouseout="this.style.background='transparent'; this.style.borderRadius='0';">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="color: var(--white); font-weight: 600; font-size: 1.1rem;">Quality Control Inspector</span>
+                            <span style="background: rgba(197, 48, 48, 0.2); color: var(--accent-light); padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Full-time</span>
+                        </div>
+                        <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 0.8rem;">Perform material testing, dimensional inspections, and certification documentation.</p>
+                        <div style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--steel-light);">
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-yen-sign"></i> Competitive</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-clock"></i> 2+ Years</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.02)'; this.style.borderRadius='8px';" onmouseout="this.style.background='transparent'; this.style.borderRadius='0';">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span style="color: var(--white); font-weight: 600; font-size: 1.1rem;">Welding Technician</span>
+                            <span style="background: rgba(197, 48, 48, 0.2); color: var(--accent-light); padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Full-time</span>
+                        </div>
+                        <p style="color: var(--steel); font-size: 0.9rem; margin-bottom: 0.8rem;">Perform MIG, TIG, and Arc welding for custom steel fabrication projects.</p>
+                        <div style="display: flex; gap: 1.5rem; font-size: 0.85rem; color: var(--steel-light);">
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-yen-sign"></i> Competitive</span>
+                            <span style="display: flex; align-items: center; gap: 0.3rem;"><i class="fas fa-clock"></i> 1+ Years</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="mailto:info@scgm-jpn.com?subject=Job Application" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Apply -->
+    <section style="background: var(--darker); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>How to Apply</h2>
+                <p>Follow these simple steps to join the SCG Metals team.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">1</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Find a Position</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Browse our open positions and find the role that matches your skills.</p>
+                </div>
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">2</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Send Your CV</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Email your resume and cover letter to info@scgm-jpn.com.</p>
+                </div>
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">3</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Interview</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Our HR team will contact you for an interview if your profile matches.</p>
+                </div>
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">4</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Welcome Aboard</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Join our team and start your journey with SCG Metals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-industry"></i>
+                    SCG <span>Metals</span>
+                </a>
+                <p>Premium steel materials and fabrication solutions. Delivering quality, precision, and reliability to construction and industrial projects worldwide from our headquarters in Tokyo, Japan.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="recruit.html">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:86-4983-40052">Toll: 86-4983-40052</a></li>
+                    <li><a href="mailto:info@scgm-jpn.com">info@scgm-jpn.com</a></li>
+                    <li><a href="http://www.scgm-jpn.com">www.scgm-jpn.com</a></li>
+                    <li>Tokyo, Japan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; SCG Metals Co., Inc. All Rights Reserved.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 600);
+        });
+
+        // Mobile Navigation
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => fadeInObserver.observe(el));
+
+    </script>
+</body>
+</html>

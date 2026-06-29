@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | SCG Metals Co., Inc.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+            --primary: #1a365d;
+            --primary-dark: #0f2744;
+            --accent: #c53030;
+            --accent-light: #e53e3e;
+            --steel: #718096;
+            --steel-light: #a0aec0;
+            --dark: #1a202c;
+            --darker: #0d1117;
+            --light: #f7fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #1a365d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, .nav-logo {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--steel-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--white);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active {
+            color: var(--accent);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding-top: 80px;
+            flex: 1;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .section-header p {
+            color: var(--steel);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(197, 48, 48, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 48, 48, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-brand .nav-logo {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-brand p {
+            color: var(--steel);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: var(--steel);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--steel);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--steel-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Loading */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(197, 48, 48, 0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--darker);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-industry"></i>
+                SCG <span>Metals</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="recruit.html">Recruit</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+
+    <section style="background: var(--dark); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Services</h2>
+                <p>End-to-end steel solutions from design and fabrication to delivery and installation support.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <div style="background: var(--darker); padding: 3rem 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; position: relative; overflow: hidden;" class="fade-in" onmouseover="this.style.borderColor='var(--accent)'; this.style.transform='translateX(5px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateX(0)';">
+                    <div style="position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent); transition: height 0.4s ease;" class="service-bar"></div>
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-cut"></i></div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; margin-bottom: 1rem;">Custom Fabrication</h3>
+                    <p style="color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem;">Precision fabrication of steel components to your exact specifications. We handle any size and design complexity with state-of-the-art CNC machinery.</p>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> CNC cutting and bending</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Welding (MIG, TIG, Arc)</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Drilling and punching</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Surface treatment (galvanizing, painting)</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Assembly and kitting</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--darker); padding: 3rem 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; position: relative; overflow: hidden;" class="fade-in" onmouseover="this.style.borderColor='var(--accent)'; this.style.transform='translateX(5px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateX(0)';">
+                    <div style="position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent); transition: height 0.4s ease;" class="service-bar"></div>
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-ruler-combined"></i></div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; margin-bottom: 1rem;">Structural Design</h3>
+                    <p style="color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem;">Engineering support for structural steel projects. Our team provides detailed drawings, load calculations, and design optimization.</p>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Structural analysis</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> 3D modeling and BIM</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Connection design</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Code compliance review</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Shop drawings</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--darker); padding: 3rem 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; position: relative; overflow: hidden;" class="fade-in" onmouseover="this.style.borderColor='var(--accent)'; this.style.transform='translateX(5px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateX(0)';">
+                    <div style="position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent); transition: height 0.4s ease;" class="service-bar"></div>
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-truck"></i></div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; margin-bottom: 1rem;">Logistics & Delivery</h3>
+                    <p style="color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem;">Global shipping and logistics management. We ensure your materials arrive on time, every time, with full tracking and documentation.</p>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> International freight</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Customs clearance</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Just-in-time delivery</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Warehousing solutions</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Project site delivery</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--darker); padding: 3rem 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; position: relative; overflow: hidden;" class="fade-in" onmouseover="this.style.borderColor='var(--accent)'; this.style.transform='translateX(5px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateX(0)';">
+                    <div style="position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent); transition: height 0.4s ease;" class="service-bar"></div>
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-flask"></i></div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; margin-bottom: 1rem;">Quality Testing</h3>
+                    <p style="color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem;">Comprehensive material testing and certification. Every batch is tested to ensure compliance with international standards.</p>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Chemical composition analysis</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Mechanical property testing</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Ultrasonic testing (UT)</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Radiographic testing (RT)</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Mill test certificates</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--darker); padding: 3rem 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; position: relative; overflow: hidden;" class="fade-in" onmouseover="this.style.borderColor='var(--accent)'; this.style.transform='translateX(5px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateX(0)';">
+                    <div style="position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent); transition: height 0.4s ease;" class="service-bar"></div>
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-drafting-compass"></i></div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; margin-bottom: 1rem;">Prototyping</h3>
+                    <p style="color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem;">Rapid prototyping services for custom steel components. Validate your designs before full production with our quick-turn sample service.</p>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> 3D printing (metal)</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Sample batch production</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Design iteration support</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Performance testing</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Cost optimization</li>
+                    </ul>
+                </div>
+
+                <div style="background: var(--darker); padding: 3rem 2rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; position: relative; overflow: hidden;" class="fade-in" onmouseover="this.style.borderColor='var(--accent)'; this.style.transform='translateX(5px)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.transform='translateX(0)';">
+                    <div style="position: absolute; top: 0; left: 0; width: 4px; height: 0; background: var(--accent); transition: height 0.4s ease;" class="service-bar"></div>
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1.5rem;"><i class="fas fa-tools"></i></div>
+                    <h3 style="color: var(--white); font-size: 1.4rem; margin-bottom: 1rem;">Installation Support</h3>
+                    <p style="color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem;">Technical support for on-site installation. Our engineers provide guidance to ensure proper assembly and safety compliance.</p>
+                    <ul style="list-style: none;">
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> On-site technical consultation</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Installation manuals</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Training programs</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> Quality inspection</li>
+                        <li style="color: var(--steel-light); padding: 0.5rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;"><i class="fas fa-check" style="position: absolute; left: 0; color: var(--accent); font-size: 0.8rem;"></i> After-sales support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Process -->
+    <section style="background: var(--darker); padding: 5rem 2rem;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Process</h2>
+                <p>How we deliver excellence from inquiry to delivery.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">1</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Inquiry</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Submit your requirements through our contact form or call us directly.</p>
+                </div>
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">2</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Quotation</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Receive a detailed quote with specifications, pricing, and delivery timeline.</p>
+                </div>
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">3</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Production</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Our team fabricates your order with precision and quality control.</p>
+                </div>
+                <div class="fade-in">
+                    <div style="width: 80px; height: 80px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--white); font-size: 1.8rem; font-family: 'Oswald', sans-serif; font-weight: 700;">4</div>
+                    <h3 style="color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem;">Delivery</h3>
+                    <p style="color: var(--steel); font-size: 0.9rem; line-height: 1.6;">Shipped to your location with full documentation and tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-industry"></i>
+                    SCG <span>Metals</span>
+                </a>
+                <p>Premium steel materials and fabrication solutions. Delivering quality, precision, and reliability to construction and industrial projects worldwide from our headquarters in Tokyo, Japan.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="recruit.html">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:86-4983-40052">Toll: 86-4983-40052</a></li>
+                    <li><a href="mailto:info@scgm-jpn.com">info@scgm-jpn.com</a></li>
+                    <li><a href="http://www.scgm-jpn.com">www.scgm-jpn.com</a></li>
+                    <li>Tokyo, Japan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; SCG Metals Co., Inc. All Rights Reserved.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 600);
+        });
+
+        // Mobile Navigation
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => fadeInObserver.observe(el));
+
+    </script>
+</body>
+</html>
